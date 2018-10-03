@@ -11,19 +11,19 @@ deleteContact = (id) => {
         contacts : newcontacts
     });
 };
-    render() {
-        return (
-            <Consumer>
+render() {
+    return (
+        <Consumer>
             {value => {
-            const { contacts } = value;
-            return(
-                <React.Fragment>
-                    {contacts.map(contact=><Contact key={contact.id} contact={contact} deleteClickHandler={this.deleteContact.bind(this,contact.id)}/>)}
-                </React.Fragment>
+                const { contacts } = value;
+                return(
+                    <React.Fragment>
+                        {contacts.map(contact=><Contact key={contact.id} contact={contact} deleteClickHandler={this.deleteContact.bind(this,contact.id)}/>)}
+                    </React.Fragment>
                 );
             }}
-            </Consumer>);
-    };
-};
+        </Consumer>);
+}
+}
 
 export default Contacts;
