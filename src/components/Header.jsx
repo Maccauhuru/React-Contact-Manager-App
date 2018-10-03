@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Header =(props) => {
-    const { title,subtitle} = props;   
+    const { title,subtitle } = props;   
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-danger mb-3 py-0">
             <div className="container">
@@ -29,7 +29,8 @@ Header.defaultProps ={
 };
 
 Header.propTypes={
-    title : PropTypes.string.isRequired
+    title : PropTypes.string.isRequired,
+    subtitle : PropTypes.string
 };
 
 export default Header;
