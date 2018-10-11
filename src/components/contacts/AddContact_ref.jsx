@@ -1,23 +1,30 @@
 import React, { Component } from "react";
 
 class AddContact extends Component {
-    constructor(props) {
+    constructor(props){
         super(props);
-        this.state = {
-            name: "",
-            email: "",
-            phone: ""
-        };
-    }  
-    onChangeHandler=e=>this.setState({
-        [e.target.name] : e.target.value
-    });
+
+        this.nameInput = React.createRef();
+        this.emailInput = React.createRef();
+        this.phoneInput = React.createRef();
+    }
     onSubmit=(e)=>{
         e.preventDefault();
-        console.log(this.state);
+        const contact = {
+            name : this.nameInput.refs.current.value,
+            email : this.emailInput.refs.current.value,
+            phone : this.phoneInput.refs.current.value
+        };
+        console.log(contact);
+    }
+
+    static defaultProps = {
+        name : "J.Treds",
+        email : "jt@gmail.com",
+        phone : "555-555-5555"
     }
     render() {
-        const { name , email , phone } = this.state;
+        const { name , email , phone } =this.props;
         return (
             <div className="card mb-4">
                 <div className="card-header bg-dark text-white">Add New Contacts</div>
@@ -30,8 +37,8 @@ class AddContact extends Component {
                                 className="form-control form-control-lg"
                                 placeholder="name"
                                 name="name"
-                                value={name}
-                                onChange={this.onChangeHandler}
+                                defaultValue={name}
+                                ref={this.nameInput}
                             />
                         </div>
                         <div className="form-group">
@@ -41,8 +48,9 @@ class AddContact extends Component {
                                 className="form-control form-control-lg"
                                 placeholder="email"
                                 name="email"
-                                value={email}
-                                onChange={this.onChangeHandler}
+                                defaultValue={email}
+                                ref={this.emailInput}
+
                             />
                         </div>
                         <div className="form-group">
@@ -52,15 +60,14 @@ class AddContact extends Component {
                                 className="form-control form-control-lg"
                                 placeholder="phone"
                                 name="phone"
-                                value={phone}
-                                onChange={this.onChangeHandler}
+                                defaultValue={phone}
+                                ref={this.phoneInput}
                             />
                         </div>
                         <input 
                             type="submit" 
                             value="Add Contact" 
                             className="btn btn-dark btn-block"
-                            onClick={this.onSubmit}
                         />
                     </form>
                 </div>

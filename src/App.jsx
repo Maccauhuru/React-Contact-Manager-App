@@ -1,23 +1,19 @@
 import React, { Component } from "react";
-import Header from "./components/layout/Header";
-import { Provider } from "./context";
-import Contacts from "./components/contacts/Contacts";
+import Header from "./components/Header";
+import Contact from "./components/Contact";
 import AddContact from "./components/contacts/AddContact";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 
 class App extends Component {
     render() {
         return (
-            <Provider>
-                <div>
-                    <Header title={"Contact Management App v1.0"}/>
-                    <div className="container">
-                        <AddContact />
-                        <Contacts/>
-                    </div>
-                </div>
-            </Provider>
+            <div className="App">
+                <AddContact />
+                <Header title={"Contact Management App v1.0"}/>
+                <Contact name="J.Treds" email="jt@gmail.com" phone="555-555-5555"/>
+                <Contact name="Jane Doe" email="jane.doe@gmail.com" />
+                <Contact email="unknown@gmail.com" phone="unknown number"/>
+            </div>
         );
     }
 }
